@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  response_text: MyText
+  response_time: 1
+
+two:
+  response_text: MyText
+  response_time: 1

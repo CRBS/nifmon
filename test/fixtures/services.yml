@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  uri: MyString
+  description: MyText
+  expectation: MyString
+  poll_interval: 1
+  last_poll: 2012-08-02 17:50:08
+  valid: false
+
+two:
+  name: MyString
+  uri: MyString
+  description: MyText
+  expectation: MyString
+  poll_interval: 1
+  last_poll: 2012-08-02 17:50:08
+  valid: false
