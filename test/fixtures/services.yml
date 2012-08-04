@@ -1,19 +1,29 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  uri: MyString
-  description: MyText
-  expectation: MyString
-  poll_interval: 1
-  last_poll: 2012-08-02 17:50:08
-  valid: false
+federation_query:
+  name: Protein Information
+  uri: "http://nif-services.neuinfo.org/nif/services/federationQuery/CCDB/Protein%20Information?q=synuclein"
+  description: Test
+  expectation: synuclein
+  poll_interval: 10
 
-two:
-  name: MyString
-  uri: MyString
-  description: MyText
-  expectation: MyString
-  poll_interval: 1
-  last_poll: 2012-08-02 17:50:08
-  valid: false
+nxdomain:
+  name: Non-existent host
+  uri: "http://this-host-does-not-exist.blah.example.com/test"
+  description: nxdomain, net should raise a SocketError
+  expectation: none
+  poll_interval: 10
+
+noweb:
+  name: Host without a web server
+  uri: "http://devilray.crbs.ucsd.edu:8888/test"
+  description: host exists, but should time out on connection
+  expectation: none
+  poll_interval: 10
+
+bad_expectation:
+  name: Expectation is not in response
+  uri: "http://nif-services.neuinfo.org/nif/services/federationQuery/CCDB/Protein%20Information?q=synuclein"
+  description: herpy derpy
+  expectation: applejack
+  poll_interval: 10
