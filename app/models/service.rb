@@ -16,8 +16,12 @@ class Service < ActiveRecord::Base
   def get_response
     response = {}
     response[:avg_time] = get_avg_response_time
-    response[:body] = HTTParty.get(self.uri).body
-    response[:valid] = validate_response(response[:body], self.expectation)
+    begin
+      response[:body] = HTTParty.get(self.uri, :timeout => 5000).body
+    rescue Timeout::Error => e
+      response[:body] = ""
+    end
+    response[:valid] = response_valid?(response[:body], self.expectation)
     return response
   end
 
@@ -51,7 +55,7 @@ class Service < ActiveRecord::Base
   end
 
   # TODO: Make this method smarter
-  def validate_response(response, expectation)
+  def response_valid?(response, expectation)
     response.to_s.include? expectation
   end 
 
