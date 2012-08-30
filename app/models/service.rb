@@ -46,7 +46,7 @@ class Service < ActiveRecord::Base
         return 0
       end
     end
-    pings.delete_if { |p| p < 1 }    
+    pings.delete_if {|p| p < 1 }
     if pings.length > 0
       return (pings.reduce(:+) / pings.length)
     else
