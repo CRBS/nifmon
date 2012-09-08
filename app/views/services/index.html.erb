@@ -1,7 +1,16 @@
-<% @services.each do |service %>
 <div class="row">
-  <div class="span4">
-    <h2><%= service.name %></h2>
-    <p><%= service.description %></p>
+  <div class="span8">
+    <table class="table table-striped">
+      <% @services.each do |service| %>
+          <tr>
+            <td><%= service.name %></td>
+            <td><%= service.description %></td>
+            <td><%= service.uri %></td>
+            <td><%= service.expectation %></td>
+            <td><%= service.poll_interval %></td>
+            <td><%= service.polls.size %></td>
+          </tr>
+      <% end %>
+    </table>
   </div>
 </div>

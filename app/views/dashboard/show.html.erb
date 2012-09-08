@@ -1,2 +1,14 @@
-<h1>Dashboard#show</h1>
-<p>Find me in app/views/dashboard/show.html.erb</p>
+<table class="table table-striped">
+  <tr>
+    <th>Service Name</th>
+    <th>URI</th>
+    <th>Last response time</th>
+  </tr>
+  <% @services.each do |service| %>
+    <tr>
+      <td><%= service.name %></td>
+      <td><%= service.uri %></td>
+      <td><%= service.polls.last.response_time %> ms</td>
+    </tr>
+  <% end %>
+</table>

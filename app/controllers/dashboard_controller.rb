@@ -3,5 +3,6 @@ class DashboardController < ApplicationController
   end
 
   def show
+    @services = Service.all :include => :polls
   end
 end

@@ -31,4 +31,8 @@ class ServiceTest < ActiveSupport::TestCase
     r = service.get_response
     assert !r[:valid], "Response was valid even with a failed expectation. Response: #{r[:body]}"
   end
+
+  test "fail" do
+    assert false, "This test failed because idk why"
+  end
 end
