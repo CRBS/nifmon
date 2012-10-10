@@ -5,10 +5,17 @@
     <th>Last response time</th>
   </tr>
   <% @services.each do |service| %>
+    <% service_last_response_time = service.polls.size > 0 ? service.polls.last.response_time : -1 %>
+    <% label_type = case service_last_response_time
+      when -1; "label label-important"
+      when (1..400); "label label-success"
+      else; "label label-warning";
+      end
+    %>
     <tr>
-      <td><%= service.name %></td>
-      <td><%= service.uri %></td>
-      <td><%= service.polls.last.response_time %> ms</td>
+      <td><%= link_to service.name, service_path(service.id) %></td>
+      <td><a href="<%= service.uri %>"><%= service.uri.truncate 80, :separator => '/' %></a></td>
+      <td><span class="<%= label_type %>"><%= service_last_response_time %> ms</span></td>
     </tr>
   <% end %>
 </table>
