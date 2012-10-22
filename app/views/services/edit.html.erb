@@ -1,2 +1,22 @@
-<h1>Service#edit</h1>
-<p>Find me in app/views/service/edit.html.erb</p>
+<div class="row">
+  <div class="span8">
+    <%= form_for @service, :html => { :class => 'form-vertical' }, :url => { :action => 'update'} do |f| %>
+      <fieldset class="control-group">
+        <%= label_tag :name, 'Name' %>
+        <%= f.text_field :name, :value => @service.name %>
+
+        <%= label_tag :description, 'Description' %>
+        <%= f.text_area :description, :rows => '3', :value => @service.description %>
+
+        <%= label_tag :uri, 'Webservice URI' %>
+        <%= f.text_field :uri %>
+
+        <%= label_tag :expectation, 'Expected Response' %>
+        <%= f.text_field :expectation, :value => @service.expectation %>
+
+        <%= f.submit 'Save changes', :class => 'btn btn-primary ' %>
+      </fieldset>
+    <% end %>
+  </div>
+</div>
+

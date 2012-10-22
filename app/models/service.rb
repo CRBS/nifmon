@@ -32,7 +32,7 @@ class Service < ActiveRecord::Base
       before_time = Time.now
       begin
         http = Net::HTTP.new(service_uri.host, service_uri.port)
-        http.open_timeout = 1 
+        http.open_timeout = 1
         http.read_timeout = 2
         if service_uri.scheme == 'https'
           http.use_ssl = true
@@ -46,9 +46,9 @@ class Service < ActiveRecord::Base
         return 0
       end
     end
-    pings.delete_if {|p| p < 1 }
+    pings.reject! {|p| p < 1 }
     if pings.length > 0
-      return (pings.reduce(:+) / pings.length)
+      return (pings.inject(:+) / pings.length)
     else
       return 0
     end
@@ -57,7 +57,7 @@ class Service < ActiveRecord::Base
   # TODO: Make this method smarter
   def response_valid?(response, expectation)
     response.to_s.include? expectation
-  end 
+  end
 
   def request_headers
     header = {}

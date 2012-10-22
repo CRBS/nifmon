@@ -5,8 +5,7 @@ class ServicesController < ApplicationController
   end
 
   def show
-    @service = Service.find params[:id]
-    @service.poll_webservice
+    redirect_to :action => 'edit'
   end
 
   def new
@@ -27,12 +26,13 @@ class ServicesController < ApplicationController
 
   def edit
     @service = Service.find params[:id]
+    @service.poll_webservice
   end
 
   def update
     @service = Service.find params[:id]
     if @service.update_attributes(params[:service])
-      redirect_to service_path(@service)
+      redirect_to :action => 'index'
     else
       flash[:error] = "There was a problem saving your changes to #{@service.name}."
       flash[:errors] = @service.errors
