@@ -1,4 +1,8 @@
 Nifmon::Application.routes.draw do
+  get "stats/view"
+
+  get "stats/detail"
+
   root :to => 'dashboard#show'
 
   resources :polls, :services
