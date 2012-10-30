@@ -17,4 +17,8 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 
+every 5.minutes do
+  rake "poll:services"
+end
+
 # Learn more: http://github.com/javan/whenever
