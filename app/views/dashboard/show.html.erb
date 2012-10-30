@@ -15,7 +15,7 @@
     <tr>
       <td><%= link_to service.name, service_path(service.id) %></td>
       <td><a href="<%= service.uri %>"><%= service.uri.truncate 80, :separator => '/' %></a></td>
-      <td><span class="<%= label_type %>"><%= service_last_response_time %> ms</span></td>
+      <td><span title="<%= service.polls.last.created_at %>" class="<%= label_type %>"><%= service_last_response_time %> ms</span></td>
     </tr>
   <% end %>
 </table>
