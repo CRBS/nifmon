@@ -3,6 +3,6 @@ class DashboardController < ApplicationController
   end
 
   def show
-    @services = Service.all :include => :polls
+    @services = Service.find(:all, :include => :polls, :order => 'name')
   end
 end
